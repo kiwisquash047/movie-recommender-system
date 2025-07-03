@@ -6,11 +6,12 @@ import time
 time.sleep(0.2)
 import os
 import urllib.request
+import gdown
+
+URL = f"https://drive.google.com/file/d/1Kp7dErH6R8MESEJJf6Xnc0j6CX_PfvzJ/view?usp=sharing"
 
 if not os.path.exists("similarity.pkl"):
-    print("Downloading similarity.pkl...")
-    url = "https://your-hosted-link.com/similarity.pkl"
-    urllib.request.urlretrieve(url, "similarity.pkl")
+    gdown.download(URL, "similarity.pkl", quiet=False)
 
 with open("similarity.pkl", "rb") as f:
     similarity = pickle.load(f)
