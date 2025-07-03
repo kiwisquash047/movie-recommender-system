@@ -14,7 +14,7 @@ if not os.path.exists("similarity.pkl"):
     if success is None:
         raise RuntimeError("gdown failed to download the file")
 if os.path.getsize("similarity.pkl") < 100_000_000:  # Expecting ~176MB
-    raise RuntimeError("Downloaded similarity.pkl too small – probably HTML error page")
+    st.error("Downloaded similarity.pkl too small")
     st.stop()
 with open("similarity.pkl", "rb") as f:
     similarity = pickle.load(f)
