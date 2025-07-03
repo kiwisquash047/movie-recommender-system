@@ -13,11 +13,6 @@ URL = f"https://drive.google.com/file/d/1Kp7dErH6R8MESEJJf6Xnc0j6CX_PfvzJ/view?u
 if not os.path.exists("similarity.pkl"):
     gdown.download(URL, "similarity.pkl", quiet=False)
 
-with open("similarity.pkl", "rb") as f:
-    similarity = pickle.load(f)
-
-
-
 def fetch_poster(movie_id):
     try:
         response= requests.get('https://api.themoviedb.org/3/movie/{}?api_key=1bd9f2f151e6a1cf5f6a506fbec69181&language=en-US'.format(movie_id), timeout=5)
