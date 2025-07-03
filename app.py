@@ -12,6 +12,9 @@ if not os.path.exists("similarity.pkl"):
     url = f"https://drive.google.com/uc?id=1Kp7dErH6R8MESEJJf6Xnc0j6CX_PfvzJ"
     gdown.download(URL, "similarity.pkl", quiet=False)
 
+with open("similarity.pkl", "rb") as f:
+    similarity = pickle.load(f)
+
 def fetch_poster(movie_id):
     try:
         response= requests.get('https://api.themoviedb.org/3/movie/{}?api_key=1bd9f2f151e6a1cf5f6a506fbec69181&language=en-US'.format(movie_id), timeout=5)
@@ -35,8 +38,6 @@ def recommend(movie):
 
 movies_dict=pickle.load(open('movie_dict.pkl', 'rb'))
 movies=pd.DataFrame(movies_dict)
-
-similarity = pickle.load(open('similarity.pkl', 'rb'))
 
 st.title('Movie Recommender System')
 
