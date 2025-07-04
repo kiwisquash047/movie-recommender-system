@@ -5,12 +5,11 @@ import requests
 import time
 time.sleep(0.2)
 import os
-import urllib.request
 import gdown
 
 if not os.path.exists("similarity.pkl"):
     url = f"https://drive.google.com/uc?id=1Kp7dErH6R8MESEJJf6Xnc0j6CX_PfvzJ"
-    success=gdown.download(URL, "similarity.pkl", quiet=False)
+    success=gdown.download(url, "similarity.pkl", quiet=False)
     if success is None:
         raise RuntimeError("gdown failed to download the file")
 if os.path.getsize("similarity.pkl") < 100_000_000:  # Expecting ~176MB
